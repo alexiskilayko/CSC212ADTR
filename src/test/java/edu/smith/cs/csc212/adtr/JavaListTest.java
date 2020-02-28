@@ -172,10 +172,43 @@ public class JavaListTest {
 		data.addIndex(-1, "the");
 	}
 	
-	// TODO write some tests for setIndex.
+	@Test
+	public void setIndex() {
+		ListADT<String> data = makeFullList();
+		data.setIndex(0, "z");
+		assertEquals(data.getIndex(0), "z");
+	}
+	
+	@Test
+	public void addIndex() {
+		ListADT<String> data = makeFullList();
+		data.addIndex(0, "z");
+		assertEquals(data.getIndex(1), "a");
+	}
+	
+	@Test
+	public void removeBack() {
+		ListADT<String> data = makeFullList();
+		data.removeBack();
+		assertEquals(data.getBack(), "c");
+	}
+	
+	@Test
+	public void removeIndex() {
+		ListADT<String> data = makeFullList();
+		data.removeIndex(0);
+		assertEquals(data.getIndex(0), "b");
+	}
+	
+	@Test
+	public void removeFront() {
+		ListADT<String> data = makeFullList();
+		data.removeFront();
+		assertEquals(data.getIndex(0), "b");
+	}
 	
 	@Test
 	public void testToJava() {
-		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "d", "d"));
+		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "c", "d"));
 	}
 }
